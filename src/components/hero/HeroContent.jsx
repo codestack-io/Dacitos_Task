@@ -1,170 +1,541 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Sparkles, ArrowRight, Star, Users } from "lucide-react";
+import {
+  Building2,
+  CalendarDays,
+  TrendingUp,
+  Users,
+  Wallet,
+  Bell,
+  ArrowUpRight,
+} from "lucide-react";
 
-// Headline split into words so each can reveal on its own beat. The
-// highlighted phrase is tagged separately so it can carry the amber
-// gradient treatment without breaking the word-by-word animation.
-const HEADLINE_LINES = [
-  { words: ["Run", "Every", "Property"], highlight: false },
-  { words: ["Like", "It"], highlight: false },
-  { words: ["Runs", "Itself."], highlight: true },
-];
 
-const TRUST_ITEMS = [
+const stats = [
   {
-    id: "rating",
-    icon: Star,
-    label: "4.9/5 customer rating",
+    icon: Building2,
+    value: "248",
+    label: "Properties",
   },
   {
-    id: "managers",
     icon: Users,
-    label: "Trusted by 500+ property managers",
+    value: "1,842",
+    label: "Guests",
+  },
+  {
+    icon: Wallet,
+    value: "£98K",
+    label: "Revenue",
   },
 ];
 
-// Shared stagger container — each direct child fades + slides up with a
-// small blur, offset by a fixed delay so the sequence reads badge →
-// headline → description → buttons → trust row.
-const containerVariants = {
-  hidden: {},
-  show: {
-    transition: { staggerChildren: 0.14, delayChildren: 0.1 },
-  },
-};
 
-const itemVariants = {
-  hidden: { opacity: 0, y: 22, filter: "blur(6px)" },
-  show: {
-    opacity: 1,
-    y: 0,
-    filter: "blur(0px)",
-    transition: { type: "spring", stiffness: 220, damping: 24, mass: 0.9 },
+const bookings = [
+  {
+    name: "Royal Apartment",
+    status: "Confirmed",
+    date: "Today",
   },
-};
-
-const wordVariants = {
-  hidden: { opacity: 0, y: 14, filter: "blur(5px)" },
-  show: {
-    opacity: 1,
-    y: 0,
-    filter: "blur(0px)",
-    transition: { type: "spring", stiffness: 260, damping: 22 },
+  {
+    name: "Skyline Hotel",
+    status: "Pending",
+    date: "Tomorrow",
   },
-};
+];
 
-export default function HeroContent() {
+
+export default function HeroImage() {
+
   return (
+
     <motion.div
-      variants={containerVariants}
-      initial="hidden"
-      animate="show"
-      className="flex flex-col items-start gap-7 text-left"
+
+      initial={{
+        opacity:0,
+        x:80,
+        scale:.95,
+      }}
+
+      animate={{
+        opacity:1,
+        x:0,
+        scale:1,
+      }}
+
+      transition={{
+        duration:.8,
+        ease:"easeOut",
+      }}
+
+
+      className="
+        relative
+        mx-auto
+        w-full
+        max-w-[650px]
+      "
+
     >
-      {/* Badge */}
-      <motion.div variants={itemVariants}>
-        <motion.span
-          animate={{ y: [0, -5, 0] }}
-          transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
-          className="group relative inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.06] px-4 py-1.5 text-[13px] font-medium text-white/80 backdrop-blur-md transition-shadow duration-500 hover:shadow-[0_0_28px_rgba(251,191,36,0.25)]"
-        >
-          <span
-            aria-hidden="true"
-            className="absolute inset-0 -z-10 rounded-full bg-gradient-to-r from-amber-400/40 via-white/10 to-amber-400/40 opacity-0 blur-[6px] transition-opacity duration-500 group-hover:opacity-100"
-          />
-          <Sparkles size={14} className="text-amber-400" />
-          AI-Powered Property Management
-        </motion.span>
-      </motion.div>
 
-      {/* Headline */}
-      <motion.h1
-        variants={itemVariants}
-        className="text-4xl font-bold leading-[1.12] tracking-tight text-white sm:text-6xl xl:text-7xl"
+
+      {/* Glow */}
+
+      <div
+        className="
+          absolute
+          inset-0
+          -z-10
+          rounded-full
+          bg-amber-400/20
+          blur-[120px]
+        "
+      />
+
+
+
+      {/* Dashboard */}
+
+      <motion.div
+
+        whileHover={{
+          y:-8,
+        }}
+
+        className="
+          overflow-hidden
+          rounded-[32px]
+          border
+          border-white/10
+          bg-[#0d1424]/90
+          shadow-[0_40px_100px_rgba(0,0,0,.5)]
+          backdrop-blur-xl
+        "
+
       >
-        {HEADLINE_LINES.map((line, lineIndex) => (
-          <motion.span
-            key={lineIndex}
-            variants={containerVariants}
-            className={`block ${
-              line.highlight
-                ? "bg-gradient-to-r from-amber-300 via-amber-400 to-amber-600 bg-clip-text text-transparent"
-                : ""
-            }`}
+
+
+        {/* Header */}
+
+        <div
+          className="
+            flex
+            items-center
+            justify-between
+            border-b
+            border-white/10
+            px-6
+            py-5
+          "
+        >
+
+          <div className="flex items-center gap-3">
+
+            <div
+              className="
+                flex
+                h-11
+                w-11
+                items-center
+                justify-center
+                rounded-2xl
+                bg-gradient-to-br
+                from-amber-400
+                to-orange-600
+              "
+            >
+
+              <Building2
+                className="text-white"
+              />
+
+            </div>
+
+
+            <div>
+
+              <h3 className="font-semibold text-white">
+                Amaze PMS
+              </h3>
+
+              <p className="text-xs text-white/50">
+                Property Dashboard
+              </p>
+
+            </div>
+
+          </div>
+
+
+
+          <div
+            className="
+              flex
+              h-10
+              w-10
+              items-center
+              justify-center
+              rounded-xl
+              bg-white/5
+            "
           >
-            {line.words.map((word, wordIndex) => (
-              <motion.span
-                key={wordIndex}
-                variants={wordVariants}
-                className="inline-block"
+
+            <Bell
+              size={18}
+              className="text-white"
+            />
+
+          </div>
+
+
+        </div>
+
+
+
+
+
+
+        {/* Stats */}
+
+
+        <div
+          className="
+            grid
+            grid-cols-3
+            gap-4
+            p-6
+          "
+        >
+
+          {
+            stats.map((item,index)=>{
+
+              const Icon=item.icon;
+
+
+              return (
+
+                <motion.div
+
+                  key={item.label}
+
+                  initial={{
+                    opacity:0,
+                    y:20
+                  }}
+
+                  animate={{
+                    opacity:1,
+                    y:0
+                  }}
+
+                  transition={{
+                    delay:index*.15
+                  }}
+
+
+                  className="
+                    rounded-2xl
+                    border
+                    border-white/10
+                    bg-white/5
+                    p-4
+                  "
+
+                >
+
+                  <Icon
+                    size={20}
+                    className="text-amber-400"
+                  />
+
+                  <h4
+                    className="
+                      mt-4
+                      text-xl
+                      font-bold
+                      text-white
+                    "
+                  >
+
+                    {item.value}
+
+                  </h4>
+
+
+                  <p
+                    className="
+                      text-xs
+                      text-white/50
+                    "
+                  >
+
+                    {item.label}
+
+                  </p>
+
+
+                </motion.div>
+
+              )
+
+
+            })
+          }
+
+        </div>
+
+
+
+
+
+
+
+        {/* Revenue Chart */}
+
+        <div
+          className="
+            mx-6
+            rounded-3xl
+            border
+            border-white/10
+            bg-white/5
+            p-5
+          "
+        >
+
+          <div
+            className="
+              flex
+              justify-between
+              items-center
+            "
+          >
+
+            <div>
+
+              <p className="text-sm text-white/50">
+                Monthly Revenue
+              </p>
+
+              <h3
+                className="
+                  text-3xl
+                  font-bold
+                  text-white
+                "
               >
-                {word}
-                {wordIndex < line.words.length - 1 ? "\u00A0" : ""}
-              </motion.span>
-            ))}
-          </motion.span>
-        ))}
-      </motion.h1>
 
-      {/* Description */}
-      <motion.p
-        variants={itemVariants}
-        className="max-w-xl text-base leading-relaxed text-white/60 sm:text-lg"
-      >
-        One dashboard for bookings, maintenance, tenants, and revenue — so
-        your team spends less time switching tabs and more time managing property.
-      </motion.p>
+                £98,450
 
-      {/* CTA buttons */}
-      <motion.div
-        variants={itemVariants}
-        className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:items-center"
-      >
-        <motion.a
-          href="#demo"
-          whileHover={{ y: -3, scale: 1.02 }}
-          whileTap={{ scale: 0.97 }}
-          transition={{ type: "spring", stiffness: 400, damping: 17 }}
-          className="group inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-amber-300 via-amber-400 to-amber-600 px-7 py-3.5 text-[15px] font-semibold text-[#0A0E1A] shadow-[0_10px_30px_rgba(217,119,6,0.35)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-300/70"
-          aria-label="Request a demo of Amaze PMS"
+              </h3>
+
+
+            </div>
+
+
+            <div
+              className="
+                rounded-full
+                bg-emerald-500/20
+                px-3
+                py-1
+                text-xs
+                text-emerald-400
+              "
+            >
+
+              +18%
+
+            </div>
+
+
+          </div>
+
+
+
+          <div
+            className="
+              mt-8
+              flex
+              h-32
+              items-end
+              gap-3
+            "
+          >
+
+            {
+              [40,65,50,80,60,95,75].map(
+                (height,i)=>(
+
+                  <motion.div
+
+                    key={i}
+
+                    initial={{
+                      height:0
+                    }}
+
+                    animate={{
+                      height:`${height}%`
+                    }}
+
+                    transition={{
+                      delay:i*.1
+                    }}
+
+
+                    className="
+                      flex-1
+                      rounded-t-xl
+                      bg-gradient-to-t
+                      from-amber-500
+                      to-yellow-300
+                    "
+
+                  />
+
+                )
+              )
+            }
+
+
+          </div>
+
+
+        </div>
+
+
+
+
+
+
+
+        {/* Booking List */}
+
+        <div
+          className="
+            m-6
+            space-y-3
+          "
         >
-          Request Demo
-          <ArrowRight
-            size={17}
-            className="transition-transform duration-300 group-hover:translate-x-1"
-          />
-        </motion.a>
 
-        <motion.a
-          href="#platform"
-          whileHover={{ y: -3 }}
-          whileTap={{ scale: 0.97 }}
-          transition={{ type: "spring", stiffness: 400, damping: 17 }}
-          className="group inline-flex items-center justify-center gap-2 rounded-full border border-white/15 bg-white/[0.04] px-7 py-3.5 text-[15px] font-semibold text-white/90 backdrop-blur-md transition-shadow duration-300 hover:shadow-[0_0_24px_rgba(255,255,255,0.12)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
-          aria-label="Explore the Amaze PMS platform"
-        >
-          Explore Platform
-          <ArrowRight
-            size={17}
-            className="transition-transform duration-300 group-hover:translate-x-1"
-          />
-        </motion.a>
+          {
+            bookings.map(item=>(
+
+              <div
+                key={item.name}
+                className="
+                  flex
+                  items-center
+                  justify-between
+                  rounded-2xl
+                  border
+                  border-white/10
+                  bg-white/5
+                  px-4
+                  py-3
+                "
+              >
+
+                <div>
+
+                  <p className="text-sm text-white">
+                    {item.name}
+                  </p>
+
+                  <p className="text-xs text-white/50">
+                    {item.date}
+                  </p>
+
+                </div>
+
+
+
+                <span
+                  className="
+                    rounded-full
+                    bg-emerald-500/20
+                    px-3
+                    py-1
+                    text-xs
+                    text-emerald-400
+                  "
+                >
+
+                  {item.status}
+
+                </span>
+
+
+              </div>
+
+            ))
+          }
+
+
+        </div>
+
+
       </motion.div>
 
-      {/* Trust indicators */}
+
+
+      {/* Floating growth card */}
+
       <motion.div
-        variants={itemVariants}
-        className="flex flex-col gap-3 pt-2 text-sm text-white/50 sm:flex-row sm:items-center sm:gap-6"
+
+        animate={{
+          y:[0,-10,0]
+        }}
+
+        transition={{
+          duration:4,
+          repeat:Infinity
+        }}
+
+
+        className="
+          absolute
+          -right-5
+          top-20
+          hidden
+          rounded-2xl
+          border
+          border-white/10
+          bg-[#111827]
+          p-4
+          shadow-xl
+          md:block
+        "
       >
-        {TRUST_ITEMS.map(({ id, icon: Icon, label }) => (
-          <span key={id} className="inline-flex items-center gap-2">
-            <Icon size={15} className="text-amber-400" />
-            {label}
-          </span>
-        ))}
+
+        <div className="flex gap-2 items-center">
+
+          <TrendingUp
+            className="text-emerald-400"
+          />
+
+          <div>
+
+            <p className="text-xs text-white/50">
+              Growth
+            </p>
+
+            <p className="font-bold text-white">
+              +24%
+            </p>
+
+          </div>
+
+        </div>
+
+
       </motion.div>
+
+
+
     </motion.div>
+
   );
 }

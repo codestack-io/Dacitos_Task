@@ -2,67 +2,109 @@
 
 import { motion } from "framer-motion";
 
-// Reusable orb configs — position, size, color, and timing all differ so
-// the three shapes never read as copies of one animation.
 const ORBS = [
   {
     id: "amber",
     className:
-      "left-[8%] top-[12%] h-[26rem] w-[26rem] bg-[radial-gradient(circle_at_center,rgba(251,191,36,0.35),transparent_70%)]",
-    animate: { y: [0, -28, 0], scale: [1, 1.08, 1] },
-    duration: 13,
+      "left-[5%] top-[15%] h-[22rem] w-[22rem] md:h-[28rem] md:w-[28rem] bg-[radial-gradient(circle,rgba(245,158,11,0.22),transparent_70%)]",
+    animate: {
+      x: [0, 20, 0],
+      y: [0, -30, 0],
+      scale: [1, 1.08, 1],
+    },
+    duration: 14,
   },
+
   {
     id: "violet",
     className:
-      "right-[6%] top-[6%] h-[30rem] w-[30rem] bg-[radial-gradient(circle_at_center,rgba(99,102,241,0.28),transparent_70%)]",
-    animate: { y: [0, 24, 0], scale: [1, 1.05, 1] },
-    duration: 17,
+      "right-[4%] top-[8%] h-[24rem] w-[24rem] md:h-[32rem] md:w-[32rem] bg-[radial-gradient(circle,rgba(139,92,246,0.22),transparent_70%)]",
+    animate: {
+      x: [0, -25, 0],
+      y: [0, 25, 0],
+      scale: [1, 1.06, 1],
+    },
+    duration: 18,
   },
+
   {
     id: "emerald",
     className:
-      "left-[32%] bottom-[4%] h-[22rem] w-[22rem] bg-[radial-gradient(circle_at_center,rgba(52,211,153,0.22),transparent_70%)]",
-    animate: { y: [0, -18, 0], scale: [1, 1.1, 1] },
-    duration: 15,
+      "left-[35%] bottom-[0%] h-[18rem] w-[18rem] md:h-[24rem] md:w-[24rem] bg-[radial-gradient(circle,rgba(16,185,129,0.18),transparent_70%)]",
+    animate: {
+      y: [0, -20, 0],
+      scale: [1, 1.1, 1],
+    },
+    duration: 16,
   },
 ];
 
 export default function HeroBackground() {
   return (
-    <div className="absolute inset-0 -z-10 overflow-hidden" aria-hidden="true">
-      {/* Layer 1 — dark base */}
-      <div className="absolute inset-0 z-0 bg-[#0A0E1A] pointer-events-none" />
+    <div
+      className="absolute inset-0 -z-10 overflow-hidden"
+      aria-hidden="true"
+    >
 
-      {/* Layer 2 — subtle grid, faded toward the edges via mask */}
+      {/* Base Background */}
+      <div className="absolute inset-0 bg-[#070B16]" />
+
+
+      {/* Grid Pattern */}
       <div
-        className="pointer-events-none absolute inset-0 z-10 opacity-[0.07]"
+        className="
+          absolute inset-0
+          opacity-[0.05]
+          pointer-events-none
+        "
         style={{
           backgroundImage:
-            "linear-gradient(to right, rgba(255,255,255,0.6) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.6) 1px, transparent 1px)",
-          backgroundSize: "56px 56px",
+            `
+            linear-gradient(
+              to right,
+              rgba(255,255,255,0.5) 1px,
+              transparent 1px
+            ),
+            linear-gradient(
+              to bottom,
+              rgba(255,255,255,0.5) 1px,
+              transparent 1px
+            )
+            `,
+          backgroundSize: "64px 64px",
           maskImage:
-            "radial-gradient(ellipse 70% 60% at 50% 30%, black 40%, transparent 85%)",
+            "radial-gradient(circle at center, black 30%, transparent 75%)",
           WebkitMaskImage:
-            "radial-gradient(ellipse 70% 60% at 50% 30%, black 40%, transparent 85%)",
+            "radial-gradient(circle at center, black 30%, transparent 75%)",
         }}
       />
 
-      {/* Layer 3 — large radial gradient wash behind the hero */}
+
+      {/* Main Hero Glow */}
       <div
-        className="pointer-events-none absolute inset-0 z-20"
+        className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            "radial-gradient(60% 50% at 50% 20%, rgba(217,119,6,0.16) 0%, rgba(10,14,26,0) 70%)",
+            "radial-gradient(50% 45% at 50% 20%, rgba(245,158,11,0.18), transparent 75%)",
         }}
       />
 
-      {/* Layer 4 — floating glow orbs */}
-      <div className="absolute inset-0 z-30">
+
+      {/* Floating Orbs */}
+      <div className="absolute inset-0">
+
         {ORBS.map((orb) => (
+
           <motion.div
             key={orb.id}
-            className={`pointer-events-none absolute rounded-full blur-3xl ${orb.className}`}
+            className={`
+              absolute
+              rounded-full
+              blur-[80px]
+              pointer-events-none
+              will-change-transform
+              ${orb.className}
+            `}
             animate={orb.animate}
             transition={{
               duration: orb.duration,
@@ -71,27 +113,38 @@ export default function HeroBackground() {
               ease: "easeInOut",
             }}
           />
+
         ))}
+
       </div>
 
-      {/* Layer 5 — CSS-only noise texture */}
+
+
+      {/* Noise Texture */}
       <div
-        className="pointer-events-none absolute inset-0 z-40 opacity-[0.035] mix-blend-overlay"
+        className="
+          absolute
+          inset-0
+          opacity-[0.025]
+          mix-blend-overlay
+          pointer-events-none
+        "
         style={{
           backgroundImage:
-            "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")",
-          backgroundRepeat: "repeat",
+            "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E\")",
         }}
       />
 
-      {/* Vignette — keeps the edges dark so content stays the focus */}
+
+      {/* Edge Vignette */}
       <div
-        className="pointer-events-none absolute inset-0 z-40"
+        className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            "radial-gradient(120% 100% at 50% 40%, transparent 55%, rgba(10,14,26,0.9) 100%)",
+            "radial-gradient(ellipse at center, transparent 45%, rgba(7,11,22,0.95) 100%)",
         }}
       />
+
     </div>
   );
 }

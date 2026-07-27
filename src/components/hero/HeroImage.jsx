@@ -3,610 +3,551 @@
 import { motion } from "framer-motion";
 import {
   Building2,
-  Bell,
-  Search,
-  Home,
-  Wallet,
-  Wrench,
-  Users,
   TrendingUp,
-  Calendar,
-  CheckCircle2,
-  Clock3,
-  AlertTriangle,
-  ArrowUpRight,
-  BarChart3,
+  Users,
+  Wallet,
+  Bell,
+  ShieldCheck,
+  Wrench,
+  Zap,
 } from "lucide-react";
+import FloatingCard from "./FloatingCards";
+
 const stats = [
   {
     icon: Building2,
     value: "248",
-    label: "Total Properties",
-    growth: "+12%",
-    color: "from-cyan-500 to-sky-500",
+    label: "Properties",
   },
   {
-    icon: Home,
+    icon: Users,
     value: "1,842",
-    label: "Occupied Units",
-    growth: "+5%",
-    color: "from-emerald-500 to-green-500",
+    label: "Guests",
   },
   {
     icon: Wallet,
     value: "£98K",
-    label: "Monthly Revenue",
-    growth: "+18%",
-    color: "from-violet-500 to-fuchsia-500",
-  },
-  {
-    icon: Wrench,
-    value: "36",
-    label: "Maintenance",
-    growth: "-8%",
-    color: "from-amber-500 to-orange-500",
+    label: "Revenue",
   },
 ];
-const revenueData = [42, 56, 48, 74, 62, 96, 84];
 
-const chartPath =
-  "M20 170 C60 130 90 145 120 115 S190 60 220 78 S290 145 320 95 S390 20 430 42 S500 85 530 58";
+
+const bookings = [
+  {
+    name: "Royal Apartment",
+    status: "Confirmed",
+    date: "Today",
+  },
+  {
+    name: "Skyline Hotel",
+    status: "Pending",
+    date: "Tomorrow",
+  },
+];
+
 
 export default function HeroImage() {
+
   return (
+
     <motion.div
-      role="img"
-      aria-label="Amaze PMS Dashboard Preview"
-      initial={{ opacity: 0, x: 80, scale: 0.96, rotate: 2 }}
-      animate={{ opacity: 1, x: 0, scale: 1, rotate: 0 }}
-      transition={{
-        duration: 0.9,
-        ease: "easeOut",
+
+      initial={{
+        opacity:0,
+        x:80,
+        scale:.95,
       }}
-      className="relative z-10 mx-auto w-full max-w-[620px] lg:max-w-[680px] xl:max-w-[760px]"
+
+      animate={{
+        opacity:1,
+        x:0,
+        scale:1,
+      }}
+
+      transition={{
+        duration:.8,
+        ease:"easeOut",
+      }}
+
+
+      className="
+        relative
+        mx-auto
+        w-full
+        max-w-[650px]
+      "
+
     >
-      {/* Background Glow */}
+
+
+      {/* Glow */}
+
       <div
-        aria-hidden="true"
-        className="absolute inset-0 -z-10 rounded-full bg-cyan-500/20 blur-[140px]"
+        className="
+          absolute
+          inset-0
+          -z-10
+          rounded-full
+          bg-amber-400/20
+          blur-[120px]
+        "
       />
 
+
+
       {/* Dashboard */}
+
       <motion.div
+
         whileHover={{
-          y: -8,
-          scale: 1.01,
+          y:-8,
         }}
-        transition={{ duration: 0.3 }}
+
         className="
+          overflow-hidden
           rounded-[32px]
           border
           border-white/10
-          bg-white/5
-          backdrop-blur-2xl
-          shadow-[0_40px_120px_rgba(0,0,0,.55)]
-          overflow-hidden
+          bg-[#0d1424]/90
+          shadow-[0_40px_100px_rgba(0,0,0,.5)]
+          backdrop-blur-xl
+        "
+
+      >
+
+
+        {/* Header */}
+
+        <div
+          className="
+            flex
+            items-center
+            justify-between
+            border-b
+            border-white/10
+            px-6
+            py-5
+          "
+        >
+
+          <div className="flex items-center gap-3">
+
+            <div
+              className="
+                flex
+                h-11
+                w-11
+                items-center
+                justify-center
+                rounded-2xl
+                bg-gradient-to-br
+                from-amber-400
+                to-orange-600
+              "
+            >
+
+              <Building2
+                className="text-white"
+              />
+
+            </div>
+
+
+            <div>
+
+              <h3 className="font-semibold text-white">
+                Amaze PMS
+              </h3>
+
+              <p className="text-xs text-white/50">
+                Property Dashboard
+              </p>
+
+            </div>
+
+          </div>
+
+
+
+          <div
+            className="
+              flex
+              h-10
+              w-10
+              items-center
+              justify-center
+              rounded-xl
+              bg-white/5
+            "
+          >
+
+            <Bell
+              size={18}
+              className="text-white"
+            />
+
+          </div>
+
+
+        </div>
+
+
+
+
+
+
+        {/* Stats */}
+
+
+        <div
+          className="
+            grid
+            grid-cols-3
+            gap-4
+            p-6
+          "
+        >
+
+          {
+            stats.map((item,index)=>{
+
+              const Icon=item.icon;
+
+
+              return (
+
+                <motion.div
+
+                  key={item.label}
+
+                  initial={{
+                    opacity:0,
+                    y:20
+                  }}
+
+                  animate={{
+                    opacity:1,
+                    y:0
+                  }}
+
+                  transition={{
+                    delay:index*.15
+                  }}
+
+
+                  className="
+                    rounded-2xl
+                    border
+                    border-white/10
+                    bg-white/5
+                    p-4
+                  "
+
+                >
+
+                  <Icon
+                    size={20}
+                    className="text-amber-400"
+                  />
+
+                  <h4
+                    className="
+                      mt-4
+                      text-xl
+                      font-bold
+                      text-white
+                    "
+                  >
+
+                    {item.value}
+
+                  </h4>
+
+
+                  <p
+                    className="
+                      text-xs
+                      text-white/50
+                    "
+                  >
+
+                    {item.label}
+
+                  </p>
+
+
+                </motion.div>
+
+              )
+
+
+            })
+          }
+
+        </div>
+
+
+
+
+
+
+
+        {/* Revenue Chart */}
+
+        <div
+          className="
+            mx-6
+            rounded-3xl
+            border
+            border-white/10
+            bg-white/5
+            p-5
+          "
+        >
+
+          <div
+            className="
+              flex
+              justify-between
+              items-center
+            "
+          >
+
+            <div>
+
+              <p className="text-sm text-white/50">
+                Monthly Revenue
+              </p>
+
+              <h3
+                className="
+                  text-3xl
+                  font-bold
+                  text-white
+                "
+              >
+
+                £98,450
+
+              </h3>
+
+
+            </div>
+
+
+            <div
+              className="
+                rounded-full
+                bg-emerald-500/20
+                px-3
+                py-1
+                text-xs
+                text-emerald-400
+              "
+            >
+
+              +18%
+
+            </div>
+
+
+          </div>
+
+
+
+          <div
+            className="
+              mt-8
+              flex
+              h-32
+              items-end
+              gap-3
+            "
+          >
+
+            {
+              [40,65,50,80,60,95,75].map(
+                (height,i)=>(
+
+                  <motion.div
+
+                    key={i}
+
+                    initial={{
+                      height:0
+                    }}
+
+                    animate={{
+                      height:`${height}%`
+                    }}
+
+                    transition={{
+                      delay:i*.1
+                    }}
+
+
+                    className="
+                      flex-1
+                      rounded-t-xl
+                      bg-gradient-to-t
+                      from-amber-500
+                      to-yellow-300
+                    "
+
+                  />
+
+                )
+              )
+            }
+
+
+          </div>
+
+
+        </div>
+
+
+
+
+
+
+
+        {/* Booking List */}
+
+        <div
+          className="
+            m-6
+            space-y-3
+          "
+        >
+
+          {
+            bookings.map(item=>(
+
+              <div
+                key={item.name}
+                className="
+                  flex
+                  items-center
+                  justify-between
+                  rounded-2xl
+                  border
+                  border-white/10
+                  bg-white/5
+                  px-4
+                  py-3
+                "
+              >
+
+                <div>
+
+                  <p className="text-sm text-white">
+                    {item.name}
+                  </p>
+
+                  <p className="text-xs text-white/50">
+                    {item.date}
+                  </p>
+
+                </div>
+
+
+
+                <span
+                  className="
+                    rounded-full
+                    bg-emerald-500/20
+                    px-3
+                    py-1
+                    text-xs
+                    text-emerald-400
+                  "
+                >
+
+                  {item.status}
+
+                </span>
+
+
+              </div>
+
+            ))
+          }
+
+
+        </div>
+
+
+      </motion.div>
+
+
+
+      {/* Floating growth card */}
+
+      <motion.div
+
+        animate={{
+          y:[0,-10,0]
+        }}
+
+        transition={{
+          duration:4,
+          repeat:Infinity
+        }}
+
+
+        className="
+          absolute
+          -right-5
+          top-20
+          hidden
+          rounded-2xl
+          border
+          border-white/10
+          bg-[#111827]
+          p-4
+          shadow-xl
+          md:block
         "
       >
-        {/* Content will be added here */}
-        {/* =========================
-    Top Navigation
-========================= */}
-<div className="border-b border-white/10 px-6 py-5">
-  <div className="flex items-center justify-between gap-4">
 
-    {/* Logo */}
-    <div className="flex items-center gap-3">
-      <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-cyan-400 to-blue-600 shadow-lg shadow-cyan-500/30">
-        <Building2 className="h-6 w-6 text-white" />
-      </div>
+</motion.div>
+      {/* Floating Card - Left */}
+<FloatingCard
+  icon={ShieldCheck}
+  title="24/7 Support"
+  subtitle="Emergency Service"
+  value="Always On"
+  badge="Online"
+  delay={0}
+  className="absolute -left-12 top-10 hidden xl:block"
+/>
 
-      <div>
-        <h3 className="text-lg font-semibold text-white">
-          Amaze PMS
-        </h3>
+{/* Floating Card - Right Top */}
+<FloatingCard
+  icon={Zap}
+  title="Power Efficiency"
+  subtitle="Energy Saving"
+  value="32%"
+  gradient="from-violet-500 to-fuchsia-500"
+  delay={0.4}
+  className="absolute -right-14 top-24 hidden xl:block"
+/>
 
-        <p className="text-xs text-zinc-400">
-          Property Management
-        </p>
-      </div>
-    </div>
+{/* Floating Card - Right Bottom */}
+<FloatingCard
+  icon={Wrench}
+  title="Maintenance"
+  subtitle="Completed Jobs"
+  value="1,250+"
+  gradient="from-cyan-500 to-blue-600"
+  delay={0.8}
+  className="absolute -right-10 bottom-10 hidden xl:block"
+/>
 
-    {/* Search */}
-    <div className="hidden flex-1 px-10 lg:block">
-      <motion.div
-        whileHover={{ scale: 1.02 }}
-        className="flex h-12 items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 backdrop-blur-xl"
-      >
-        <Search className="h-4 w-4 text-zinc-400" />
 
-        <input
-          type="text"
-          placeholder="Search properties..."
-          className="w-full bg-transparent text-sm text-white placeholder:text-zinc-500 outline-none"
-        />
-      </motion.div>
-    </div>
 
-    {/* Right Side */}
-    <div className="flex items-center gap-4">
-
-      {/* Notification */}
-      <motion.button
-        whileHover={{
-          scale: 1.08,
-          rotate: 8,
-        }}
-        whileTap={{ scale: 0.95 }}
-        className="relative flex h-11 w-11 items-center justify-center rounded-2xl border border-white/10 bg-white/5"
-      >
-        <Bell className="h-5 w-5 text-white" />
-
-        <span className="absolute right-2 top-2 h-2.5 w-2.5 rounded-full bg-emerald-400 ring-2 ring-zinc-900" />
-      </motion.button>
-
-      {/* Avatar */}
-      <motion.div
-        whileHover={{ scale: 1.05 }}
-        className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-3 py-2"
-      >
-        <div className="relative">
-          <div className="flex h-11 w-11 items-center justify-center rounded-full bg-gradient-to-br from-violet-500 to-cyan-500 font-semibold text-white">
-            AS
-          </div>
-
-          <span className="absolute bottom-0 right-0 h-3 w-3 rounded-full border-2 border-zinc-900 bg-emerald-400" />
-        </div>
-
-        <div className="hidden md:block">
-          <p className="text-sm font-medium text-white">
-            Admin
-          </p>
-
-          <p className="text-xs text-zinc-400">
-            Online
-          </p>
-        </div>
-      </motion.div>
-
-    </div>
-  </div>
-</div>
-{/* =========================
-    Statistics
-========================= */}
-<div className="grid grid-cols-2 gap-5 p-6 xl:grid-cols-4">
-  {stats.map((item, index) => {
-    const Icon = item.icon;
-
-    return (
-      <motion.div
-        key={item.label}
-        initial={{
-          opacity: 0,
-          y: 30,
-        }}
-        animate={{
-          opacity: 1,
-          y: 0,
-        }}
-        transition={{
-          delay: 0.2 + index * 0.1,
-          duration: 0.5,
-        }}
-        whileHover={{
-          y: -6,
-          scale: 1.03,
-        }}
-        className="group rounded-3xl border border-white/10 bg-white/5 p-5 backdrop-blur-xl transition-all duration-300 hover:border-cyan-400/40 hover:shadow-[0_0_40px_rgba(34,211,238,.15)]"
-      >
-        <div className="flex items-start justify-between">
-          <div
-            className={`flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br ${item.color}`}
-          >
-            <Icon className="h-6 w-6 text-white" />
-          </div>
-
-          <motion.div
-            whileHover={{ x: 3, y: -3 }}
-            className="rounded-full bg-emerald-500/15 p-2"
-          >
-            <ArrowUpRight className="h-4 w-4 text-emerald-400" />
-          </motion.div>
-        </div>
-
-        <motion.h2
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{
-            delay: 0.5 + index * 0.1,
-          }}
-          className="mt-6 text-3xl font-bold text-white"
-        >
-          {item.value}
-        </motion.h2>
-
-        <p className="mt-2 text-sm text-zinc-400">
-          {item.label}
-        </p>
-
-        <div className="mt-5 flex items-center gap-2">
-          <span
-            className={`rounded-full px-2 py-1 text-xs font-medium ${
-              item.growth.startsWith("+")
-                ? "bg-emerald-500/15 text-emerald-400"
-                : "bg-red-500/15 text-red-400"
-            }`}
-          >
-            {item.growth}
-          </span>
-
-          <span className="text-xs text-zinc-500">
-            this month
-          </span>
-        </div>
-      </motion.div>
-    );
-  })}
-</div>
-{/* =========================
-      Revenue Analytics
-========================= */}
-<div className="grid gap-6 px-6 pb-6 lg:grid-cols-[2fr_1fr]">
-
-  {/* Revenue Card */}
-  <motion.div
-    initial={{ opacity: 0, y: 40 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ delay: 0.4 }}
-    whileHover={{ y: -4 }}
-    className="overflow-hidden rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl"
-  >
-
-    {/* Header */}
-
-    <div className="flex items-center justify-between border-b border-white/10 px-6 py-5">
-
-      <div>
-        <p className="text-sm text-zinc-400">
-          Revenue Analytics
-        </p>
-
-        <h2 className="mt-1 text-3xl font-bold text-white">
-          £98,450
-        </h2>
-      </div>
-
-      <div className="flex items-center gap-2">
-
-        {["Week", "Month", "Year"].map((tab, i) => (
-          <button
-            key={tab}
-            className={`rounded-xl px-3 py-2 text-sm transition ${
-              i === 1
-                ? "bg-cyan-500 text-white"
-                : "bg-white/5 text-zinc-400 hover:bg-white/10"
-            }`}
-          >
-            {tab}
-          </button>
-        ))}
-
-      </div>
-    </div>
-
-    {/* Chart */}
-
-    <div className="relative h-[330px] p-6">
-
-      {/* Grid */}
-
-      <div
-        aria-hidden="true"
-        className="absolute inset-0 opacity-20"
-        style={{
-          backgroundImage: `
-            linear-gradient(to right, rgba(255,255,255,.08) 1px, transparent 1px),
-            linear-gradient(to bottom, rgba(255,255,255,.08) 1px, transparent 1px)
-          `,
-          backgroundSize: "48px 48px",
-        }}
-      />
-
-      {/* Badge */}
-
-      <div className="absolute right-6 top-6 rounded-full border border-emerald-400/30 bg-emerald-500/10 px-3 py-1 text-sm font-medium text-emerald-400">
-        +18.4%
-      </div>
-
-      {/* SVG */}
-
-      <svg
-        viewBox="0 0 550 200"
-        className="absolute inset-0 h-full w-full"
-      >
-        <defs>
-
-          <linearGradient
-            id="lineGradient"
-            x1="0%"
-            y1="0%"
-            x2="100%"
-            y2="0%"
-          >
-            <stop offset="0%" stopColor="#22d3ee" />
-            <stop offset="100%" stopColor="#3b82f6" />
-          </linearGradient>
-
-          <linearGradient
-            id="fillGradient"
-            x1="0%"
-            y1="0%"
-            x2="0%"
-            y2="100%"
-          >
-            <stop offset="0%" stopColor="#22d3ee55" />
-            <stop offset="100%" stopColor="#22d3ee00" />
-          </linearGradient>
-
-        </defs>
-
-        {/* Area */}
-
-        <motion.path
-          d={`${chartPath} L530 200 L20 200 Z`}
-          fill="url(#fillGradient)"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1 }}
-        />
-
-        {/* Line */}
-
-        <motion.path
-          d={chartPath}
-          fill="none"
-          stroke="url(#lineGradient)"
-          strokeWidth="5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          initial={{ pathLength: 0 }}
-          animate={{ pathLength: 1 }}
-          transition={{
-            duration: 2,
-            ease: "easeInOut",
-          }}
-        />
-
-        {/* Points */}
-
-        {revenueData.map((_, index) => {
-
-          const points = [
-            [20,170],
-            [95,135],
-            [170,120],
-            [245,70],
-            [320,95],
-            [420,42],
-            [530,58],
-          ];
-
-          return (
-            <motion.circle
-              key={index}
-              cx={points[index][0]}
-              cy={points[index][1]}
-              r="5"
-              fill="#22d3ee"
-              initial={{ scale: 0 }}
-              animate={{ scale: 1 }}
-              transition={{
-                delay: 1 + index * 0.1,
-              }}
-            />
-          );
-
-        })}
-
-      </svg>
-
-      {/* Bottom Labels */}
-
-      <div className="absolute bottom-6 left-6 right-6 flex justify-between text-xs text-zinc-500">
-        {["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"].map((month) => (
-          <span key={month}>{month}</span>
-        ))}
-      </div>
-
-    </div>
-
-  </motion.div>
-
-  {/* Empty column for next step */}
-  <div className="space-y-6">
-    {/* Occupancy card goes here in Step 5 */}
-  </div>
-  <div className="space-y-6">
-  {/* =========================
-      Occupancy Card
-  ========================= */}
-
-  <motion.div
-    initial={{ opacity: 0, x: 30 }}
-    animate={{ opacity: 1, x: 0 }}
-    transition={{ delay: 0.6 }}
-    whileHover={{
-      y: -5,
-      scale: 1.02,
-    }}
-    className="rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl"
-  >
-    {/* Header */}
-    <div className="flex items-center justify-between">
-      <div>
-        <p className="text-sm text-zinc-400">
-          Occupancy
-        </p>
-
-        <h3 className="mt-1 text-xl font-semibold text-white">
-          Property Status
-        </h3>
-      </div>
-
-      <div className="rounded-full border border-emerald-400/20 bg-emerald-500/10 px-3 py-1 text-xs font-medium text-emerald-400">
-        Live
-      </div>
-    </div>
-
-    {/* Progress */}
-    <div className="mt-8 flex justify-center">
-      <div className="relative h-44 w-44">
-        <svg
-          className="-rotate-90 h-44 w-44"
-          viewBox="0 0 160 160"
-        >
-          <defs>
-            <linearGradient
-              id="occupancyGradient"
-              x1="0%"
-              y1="0%"
-              x2="100%"
-              y2="100%"
-            >
-              <stop offset="0%" stopColor="#22d3ee" />
-              <stop offset="100%" stopColor="#22c55e" />
-            </linearGradient>
-          </defs>
-
-          {/* Background Ring */}
-          <circle
-            cx="80"
-            cy="80"
-            r="68"
-            fill="none"
-            stroke="rgba(255,255,255,.08)"
-            strokeWidth="12"
-          />
-
-          {/* Animated Progress Ring */}
-          <motion.circle
-            cx="80"
-            cy="80"
-            r="68"
-            fill="none"
-            stroke="url(#occupancyGradient)"
-            strokeWidth="12"
-            strokeLinecap="round"
-            strokeDasharray="427"
-            strokeDashoffset="427"
-            animate={{
-              strokeDashoffset: 21,
-            }}
-            transition={{
-              duration: 2,
-              ease: "easeOut",
-            }}
-          />
-        </svg>
-
-        {/* Center Content */}
-        <div className="absolute inset-0 flex flex-col items-center justify-center">
-          <motion.h2
-            initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
-            transition={{
-              delay: 0.8,
-              type: "spring",
-            }}
-            className="text-5xl font-bold text-white"
-          >
-            95%
-          </motion.h2>
-
-          <p className="mt-2 text-sm text-zinc-400">
-            Occupied
-          </p>
-        </div>
-      </div>
-    </div>
-
-    {/* Status Badge */}
-    <motion.div
-      whileHover={{ scale: 1.05 }}
-      className="mx-auto mt-6 w-fit rounded-full bg-emerald-500/15 px-4 py-2 text-sm font-medium text-emerald-400"
-    >
-      ● Excellent Occupancy
     </motion.div>
 
-    {/* Details */}
-    <div className="mt-8 space-y-4">
-      {[
-        {
-          label: "Occupied Units",
-          value: "1,842",
-          colour: "bg-emerald-400",
-        },
-        {
-          label: "Available Units",
-          value: "96",
-          colour: "bg-cyan-400",
-        },
-        {
-          label: "Reserved",
-          value: "42",
-          colour: "bg-violet-400",
-        },
-      ].map((item) => (
-        <div
-          key={item.label}
-          className="flex items-center justify-between rounded-2xl border border-white/10 bg-white/5 px-4 py-3"
-        >
-          <div className="flex items-center gap-3">
-            <span
-              className={`h-3 w-3 rounded-full ${item.colour}`}
-            />
-
-            <span className="text-sm text-zinc-300">
-              {item.label}
-            </span>
-          </div>
-
-          <span className="font-semibold text-white">
-            {item.value}
-          </span>
-        </div>
-      ))}
-    </div>
-
-    {/* Footer */}
-    <div className="mt-8 rounded-2xl border border-cyan-400/10 bg-gradient-to-r from-cyan-500/10 to-emerald-500/10 p-4">
-      <div className="flex items-center justify-between">
-        <div>
-          <p className="text-xs text-zinc-400">
-            Monthly Growth
-          </p>
-
-          <h4 className="mt-1 text-lg font-semibold text-white">
-            +5.2%
-          </h4>
-        </div>
-
-        <TrendingUp className="h-8 w-8 text-emerald-400" />
-      </div>
-    </div>
-  </motion.div>
-</div>
-
-</div>
-      </motion.div>
-    </motion.div>
   );
 }
-
-
-
-
-
-
-
