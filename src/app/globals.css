@@ -1,0 +1,196 @@
+@import "tailwindcss";
+
+/* ------------------------------ */
+/* CSS Variables */
+/* ------------------------------ */
+
+:root {
+  /* Colors */
+  --background: #f8fafc;
+  --foreground: #0f172a;
+
+  --primary: #2563eb;
+  --primary-light: #3b82f6;
+
+  --secondary: #06b6d4;
+
+  --muted: #64748b;
+  --border: #e2e8f0;
+
+  --card: #ffffff;
+
+  /* Radius */
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+
+  /* Shadows */
+  --shadow-sm: 0 4px 10px rgba(15, 23, 42, 0.05);
+
+  --shadow-md: 0 10px 30px rgba(15, 23, 42, 0.08);
+
+  --shadow-lg: 0 20px 60px rgba(15, 23, 42, 0.12);
+
+  --shadow-glow: 0 0 40px rgba(37, 99, 235, 0.25);
+}
+
+/* ------------------------------ */
+/* Theme Variables */
+/* ------------------------------ */
+
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-primary: var(--primary);
+  --color-primary-light: var(--primary-light);
+
+  --color-secondary: var(--secondary);
+
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+
+  --color-card: var(--card);
+
+  --font-sans: var(--font-inter);
+  --font-heading: var(--font-space);
+}
+
+/* ------------------------------ */
+/* Base */
+/* ------------------------------ */
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-inter);
+  text-rendering: optimizeLegibility;
+}
+
+/* ------------------------------ */
+/* Typography */
+/* ------------------------------ */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-space);
+  color: var(--foreground);
+  font-weight: 700;
+}
+
+p {
+  color: var(--muted);
+  line-height: 1.8;
+}
+
+/* ------------------------------ */
+/* Buttons */
+/* ------------------------------ */
+
+button {
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* ------------------------------ */
+/* Links */
+/* ------------------------------ */
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ------------------------------ */
+/* Images */
+/* ------------------------------ */
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/* ------------------------------ */
+/* Selection */
+/* ------------------------------ */
+
+::selection {
+  background: var(--primary);
+  color: white;
+}
+
+/* ------------------------------ */
+/* Scrollbar */
+/* ------------------------------ */
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-light);
+}
+
+/* ------------------------------ */
+/* Utilities */
+/* ------------------------------ */
+
+.section-padding {
+  padding: 6rem 1.5rem;
+}
+
+.container-custom {
+  width: 100%;
+  max-width: 1280px;
+  margin-inline: auto;
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.gradient-text {
+  background: linear-gradient(
+    90deg,
+    var(--primary),
+    var(--secondary)
+  );
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.shadow-glow {
+  box-shadow: var(--shadow-glow);
+}
+
+.card-shadow {
+  box-shadow: var(--shadow-md);
+}
