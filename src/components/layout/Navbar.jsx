@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ArrowUpRight } from "lucide-react";
 import clsx from "clsx";
-
+import Image from "next/image";
 /**
  * Amaze PMS — primary navigation.
  *
@@ -79,21 +79,26 @@ export default function Navbar() {
         className={clsx(
           "mx-auto mt-3 flex max-w-6xl items-center justify-between rounded-2xl px-4 py-3 transition-all duration-500 sm:px-6",
           isScrolled
-  ? "border border-white/10 bg-[#0A0E1A]/70 shadow-[0_8px_30px_rgba(0,0,0,0.35)] backdrop-blur-xl"
+  ? "border border-white/10 bg-slate-900/55 shadow-[0_8px_30px_rgba(0,0,0,0.35)] backdrop-blur-xl"
   : "border border-white/5 bg-[#0A0E1A]/35 backdrop-blur-md"
         )}
       >
         {/* Logo */}
         <a
           href="#top"
-          className="group flex items-center gap-2.5 rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400/70"
+          className="group flex items-center gap-2.5 rounded-lg focus-visible:outline-none "
         >
           <motion.span
             whileHover={{ rotate: -6, scale: 1.05 }}
             transition={{ type: "spring", stiffness: 300, damping: 15 }}
-            className="relative flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-amber-300 to-amber-600 text-[13px] font-bold text-[#0A0E1A]"
+            className="relative flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br  text-[13px] font-bold text-[#0A0E1A]"
           >
-            A
+            <Image
+           src="/logo.png"
+           alt="Dcitos"
+           width={160}
+           height={45}
+/>
             <span className="absolute -right-1 -top-1 flex h-2.5 w-2.5">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
               <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-emerald-400" />
@@ -123,13 +128,7 @@ export default function Navbar() {
                 className="relative block rounded-lg px-4 py-2 text-[13.5px] font-medium text-white/70 transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400/70"
                 >
                   {link.label}
-                  {isActive && (
-                    <motion.span
-                      layoutId="nav-underline"
-                      className="absolute bottom-0.5 left-4 right-4 h-[2px] rounded-full bg-gradient-to-r from-amber-300 via-amber-400 to-amber-500"
-                      transition={{ type: "spring", stiffness: 420, damping: 32 }}
-                    />
-                  )}
+                 v
                 </a>
               </li>
             );
@@ -142,7 +141,23 @@ export default function Navbar() {
           whileHover={{ y: -2 }}
           whileTap={{ scale: 0.96 }}
           transition={{ type: "spring", stiffness: 400, damping: 18 }}
-          className="group hidden items-center gap-1.5 rounded-full bg-white px-4 py-2 text-[13.5px] font-semibold text-[#0A0E1A] shadow-[0_1px_0_rgba(255,255,255,0.4)_inset] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400/70 lg:inline-flex"
+          className="
+hidden
+lg:flex
+items-center
+gap-2
+rounded-full
+bg-gradient-to-r
+from-amber-500
+to-orange-500
+px-6
+py-3
+font-semibold
+text-white
+shadow-lg
+hover:scale-105
+transition
+"
         >
           Request Demo
           <ArrowUpRight
