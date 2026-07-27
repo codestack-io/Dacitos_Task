@@ -63,7 +63,7 @@ export default function HeroImage() {
         duration: 0.9,
         ease: "easeOut",
       }}
-      className="relative mx-auto w-full max-w-4xl"
+      className="relative z-10 mx-auto w-full max-w-[620px] lg:max-w-[680px] xl:max-w-[760px]"
     >
       {/* Background Glow */}
       <div
@@ -89,11 +89,7 @@ export default function HeroImage() {
         "
       >
         {/* Content will be added here */}
-      </motion.div>
-    </motion.div>
-  );
-}
-{/* =========================
+        {/* =========================
     Top Navigation
 ========================= */}
 <div className="border-b border-white/10 px-6 py-5">
@@ -179,7 +175,6 @@ export default function HeroImage() {
 {/* =========================
     Statistics
 ========================= */}
-
 <div className="grid grid-cols-2 gap-5 p-6 xl:grid-cols-4">
   {stats.map((item, index) => {
     const Icon = item.icon;
@@ -257,7 +252,6 @@ export default function HeroImage() {
 {/* =========================
       Revenue Analytics
 ========================= */}
-
 <div className="grid gap-6 px-6 pb-6 lg:grid-cols-[2fr_1fr]">
 
   {/* Revenue Card */}
@@ -433,5 +427,186 @@ export default function HeroImage() {
   <div className="space-y-6">
     {/* Occupancy card goes here in Step 5 */}
   </div>
+  <div className="space-y-6">
+  {/* =========================
+      Occupancy Card
+  ========================= */}
+
+  <motion.div
+    initial={{ opacity: 0, x: 30 }}
+    animate={{ opacity: 1, x: 0 }}
+    transition={{ delay: 0.6 }}
+    whileHover={{
+      y: -5,
+      scale: 1.02,
+    }}
+    className="rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl"
+  >
+    {/* Header */}
+    <div className="flex items-center justify-between">
+      <div>
+        <p className="text-sm text-zinc-400">
+          Occupancy
+        </p>
+
+        <h3 className="mt-1 text-xl font-semibold text-white">
+          Property Status
+        </h3>
+      </div>
+
+      <div className="rounded-full border border-emerald-400/20 bg-emerald-500/10 px-3 py-1 text-xs font-medium text-emerald-400">
+        Live
+      </div>
+    </div>
+
+    {/* Progress */}
+    <div className="mt-8 flex justify-center">
+      <div className="relative h-44 w-44">
+        <svg
+          className="-rotate-90 h-44 w-44"
+          viewBox="0 0 160 160"
+        >
+          <defs>
+            <linearGradient
+              id="occupancyGradient"
+              x1="0%"
+              y1="0%"
+              x2="100%"
+              y2="100%"
+            >
+              <stop offset="0%" stopColor="#22d3ee" />
+              <stop offset="100%" stopColor="#22c55e" />
+            </linearGradient>
+          </defs>
+
+          {/* Background Ring */}
+          <circle
+            cx="80"
+            cy="80"
+            r="68"
+            fill="none"
+            stroke="rgba(255,255,255,.08)"
+            strokeWidth="12"
+          />
+
+          {/* Animated Progress Ring */}
+          <motion.circle
+            cx="80"
+            cy="80"
+            r="68"
+            fill="none"
+            stroke="url(#occupancyGradient)"
+            strokeWidth="12"
+            strokeLinecap="round"
+            strokeDasharray="427"
+            strokeDashoffset="427"
+            animate={{
+              strokeDashoffset: 21,
+            }}
+            transition={{
+              duration: 2,
+              ease: "easeOut",
+            }}
+          />
+        </svg>
+
+        {/* Center Content */}
+        <div className="absolute inset-0 flex flex-col items-center justify-center">
+          <motion.h2
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            transition={{
+              delay: 0.8,
+              type: "spring",
+            }}
+            className="text-5xl font-bold text-white"
+          >
+            95%
+          </motion.h2>
+
+          <p className="mt-2 text-sm text-zinc-400">
+            Occupied
+          </p>
+        </div>
+      </div>
+    </div>
+
+    {/* Status Badge */}
+    <motion.div
+      whileHover={{ scale: 1.05 }}
+      className="mx-auto mt-6 w-fit rounded-full bg-emerald-500/15 px-4 py-2 text-sm font-medium text-emerald-400"
+    >
+      ● Excellent Occupancy
+    </motion.div>
+
+    {/* Details */}
+    <div className="mt-8 space-y-4">
+      {[
+        {
+          label: "Occupied Units",
+          value: "1,842",
+          colour: "bg-emerald-400",
+        },
+        {
+          label: "Available Units",
+          value: "96",
+          colour: "bg-cyan-400",
+        },
+        {
+          label: "Reserved",
+          value: "42",
+          colour: "bg-violet-400",
+        },
+      ].map((item) => (
+        <div
+          key={item.label}
+          className="flex items-center justify-between rounded-2xl border border-white/10 bg-white/5 px-4 py-3"
+        >
+          <div className="flex items-center gap-3">
+            <span
+              className={`h-3 w-3 rounded-full ${item.colour}`}
+            />
+
+            <span className="text-sm text-zinc-300">
+              {item.label}
+            </span>
+          </div>
+
+          <span className="font-semibold text-white">
+            {item.value}
+          </span>
+        </div>
+      ))}
+    </div>
+
+    {/* Footer */}
+    <div className="mt-8 rounded-2xl border border-cyan-400/10 bg-gradient-to-r from-cyan-500/10 to-emerald-500/10 p-4">
+      <div className="flex items-center justify-between">
+        <div>
+          <p className="text-xs text-zinc-400">
+            Monthly Growth
+          </p>
+
+          <h4 className="mt-1 text-lg font-semibold text-white">
+            +5.2%
+          </h4>
+        </div>
+
+        <TrendingUp className="h-8 w-8 text-emerald-400" />
+      </div>
+    </div>
+  </motion.div>
+</div>
 
 </div>
+      </motion.div>
+    </motion.div>
+  );
+}
+
+
+
+
+
+
+

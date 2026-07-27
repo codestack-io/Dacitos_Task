@@ -79,8 +79,8 @@ export default function Navbar() {
         className={clsx(
           "mx-auto mt-3 flex max-w-6xl items-center justify-between rounded-2xl px-4 py-3 transition-all duration-500 sm:px-6",
           isScrolled
-            ? "border border-white/10 bg-[#0A0E1A]/70 shadow-[0_8px_30px_rgba(0,0,0,0.35)] backdrop-blur-xl"
-            : "border border-transparent bg-transparent shadow-none"
+  ? "border border-white/10 bg-[#0A0E1A]/70 shadow-[0_8px_30px_rgba(0,0,0,0.35)] backdrop-blur-xl"
+  : "border border-white/5 bg-[#0A0E1A]/35 backdrop-blur-md"
         )}
       >
         {/* Logo */}
@@ -105,12 +105,13 @@ export default function Navbar() {
         </a>
 
         {/* Center links — desktop */}
-        <ul
-          className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-1 lg:flex"
-          onMouseLeave={() => setHoveredId(null)}
-        >
+   <ul
+  className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-1 rounded-full bg-white px-4 py-2 shadow-lg lg:flex"
+  onMouseLeave={() => setHoveredId(null)}
+>
           {NAV_LINKS.map((link) => {
-            const isShown = hoveredId ? hoveredId === link.id : activeId === link.id;
+            const isActive = activeId === link.id;
+            const isHovered = hoveredId === link.id;
             return (
               <li key={link.id} className="relative">
                 <a
@@ -119,10 +120,10 @@ export default function Navbar() {
                   onFocus={() => setHoveredId(link.id)}
                   onBlur={() => setHoveredId(null)}
                   onClick={() => setActiveId(link.id)}
-                  className="relative block rounded-lg px-4 py-2 text-[13.5px] font-medium text-white/70 transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400/70"
+                className="relative block rounded-lg px-4 py-2 text-[13.5px] font-medium text-white/70 transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400/70"
                 >
                   {link.label}
-                  {isShown && (
+                  {isActive && (
                     <motion.span
                       layoutId="nav-underline"
                       className="absolute bottom-0.5 left-4 right-4 h-[2px] rounded-full bg-gradient-to-r from-amber-300 via-amber-400 to-amber-500"

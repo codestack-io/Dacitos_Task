@@ -39,10 +39,13 @@ export default function Hero() {
 
       <div className="relative z-10 mx-auto grid max-w-7xl grid-cols-1 items-center gap-16 lg:grid-cols-[1fr_1.15fr] lg:gap-10 xl:gap-16">
         {/* Left: badge, headline, paragraph, CTAs */}
-        <HeroContent />
+       <div className="relative z-20">
+            <HeroContent />
+        </div>
 
-        {/* Right: dashboard mockup with floating stat cards */}
-        <HeroImage />
+        <div className="relative z-10">
+          <HeroImage />
+        </div>
       </div>
 
       {/* Bottom-center, scrolls to the next section on click */}
