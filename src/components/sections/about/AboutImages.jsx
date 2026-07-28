@@ -69,15 +69,15 @@ export default function AboutImages() {
           repeat: Infinity,
           ease: "easeInOut",
         }}
-        className="absolute -left-6 top-10 z-20 rounded-3xl border border-white/10 bg-[#0f172a]/95 p-5 backdrop-blur-xl shadow-2xl"
+        className="absolute -left-6 top-10 z-20 rounded-3xl border border-white/10 bg-cyan-500/10 p-5 backdrop-blur-xl shadow-2xl"
       >
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-3 ">
           <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-cyan-500 to-blue-600">
             <Users className="h-6 w-6 text-white" />
           </div>
 
-          <div>
-            <h4 className="text-xl font-bold text-white">
+          <div >
+            <h4 className="text-xl font-bold ">
               15,000+
             </h4>
 
@@ -106,7 +106,7 @@ export default function AboutImages() {
           </div>
 
           <div>
-            <h4 className="text-lg font-bold text-white">
+            <h4 className="absolute -right-6 bottom-12 z-30 rounded-3xl bg-blue-300 p-3 backdrop-blur-xl">
               PAN India
             </h4>
 

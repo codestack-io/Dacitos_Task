@@ -24,18 +24,18 @@ const stats = [
     icon: Users,
     value: 15000,
     suffix: "+",
-    label: "Professional Workforce",
+    
   },
   {
     icon: Building2,
     value: 200,
     suffix: "+",
-    label: "Enterprise Clients",
+    
   },
   {
     icon: MapPin,
     value: "PAN India",
-    label: "Operational Presence",
+    
   },
 ];
 function CountUp({ value, suffix = "" }) {
@@ -144,7 +144,7 @@ export default function AboutSection() {
 
             <div className="mt-12 grid gap-5 sm:grid-cols-3">
               {stats.map((item, index) => {
-                const Icon = item.icon;
+                
 
                 return (
                   <motion.div
@@ -158,11 +158,9 @@ export default function AboutSection() {
                     whileHover={{
                       y: -6,
                     }}
-                    className="rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl"
+                    
                   >
-                    <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-cyan-500 to-blue-600">
-                      <Icon className="h-6 w-6 text-white" />
-                    </div>
+                    
 
                     <h3 className="mt-5 text-3xl font-bold text-white">
                    {typeof item.value === "number" ? (
@@ -171,9 +169,7 @@ export default function AboutSection() {
                   item.value
                     )}
                     </h3>
-                    <p className="mt-2 text-sm text-slate-400">
-                      {item.label}
-                    </p>
+                    
                   </motion.div>
                 );
               })}
@@ -219,15 +215,7 @@ export default function AboutSection() {
               className="absolute left-1/2 top-1/2 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-cyan-500/10"
             />
 
-            {/* Main Logo Card */}
-
-            
-
-            {/* Floating Team Card */}
-
-            
-
-            {/* Experience Card */}
+        {/* Experience Card */}
 
             <motion.div
               animate={{
