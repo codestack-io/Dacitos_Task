@@ -18,11 +18,11 @@ import Image from "next/image";
  */
 
 const NAV_LINKS = [
-  { id: "solutions", label: "Solutions", href: "#solutions" },
-  { id: "features", label: "Features", href: "#features" },
-  { id: "pricing", label: "Pricing", href: "#pricing" },
-  { id: "about", label: "About", href: "#about" },
-  { id: "contact", label: "Contact", href: "#contact" },
+  { id: "Home", label: "Home",  },
+  { id: "About Us", label: "About Us", },
+  { id: "Services", label: "Services",  },
+  { id: "Careers", label: "Careers",  },
+  { id: "contact", label: "Contact", },
 ];
 
 const SCROLL_THRESHOLD = 24;
@@ -128,7 +128,7 @@ export default function Navbar() {
                 className="relative block rounded-lg px-4 py-2 text-[13.5px] font-medium text-white/70 transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400/70"
                 >
                   {link.label}
-                 v
+                 
                 </a>
               </li>
             );
