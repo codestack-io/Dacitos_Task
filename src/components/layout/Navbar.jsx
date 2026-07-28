@@ -18,13 +18,32 @@ import Image from "next/image";
  */
 
 const NAV_LINKS = [
-  { id: "Home", label: "Home",  },
-  { id: "About Us", label: "About Us", },
-  { id: "Services", label: "Services",  },
-  { id: "Careers", label: "Careers",  },
-  { id: "contact", label: "Contact", },
+  {
+    id: "home",
+    label: "Home",
+    href: "/",
+  },
+  {
+    id: "about",
+    label: "About Us",
+    href: "/about",
+  },
+  {
+    id: "services",
+    label: "Services",
+    href: "/services",
+  },
+  {
+    id: "careers",
+    label: "Careers",
+    href: "/careers",
+  },
+  {
+    id: "contact",
+    label: "Contact",
+    href: "/contact",
+  },
 ];
-
 const SCROLL_THRESHOLD = 24;
 
 export default function Navbar() {
