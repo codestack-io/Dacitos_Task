@@ -47,7 +47,7 @@ export default function HeroBackground() {
     >
 
       {/* Base Background */}
-      <div className="absolute inset-0 bg-[#32374b]" />
+      <div className="absolute w-full inset-0 bg-[#32374b]" />
 
 
       {/* Grid Pattern */}

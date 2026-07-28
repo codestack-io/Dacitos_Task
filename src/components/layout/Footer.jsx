@@ -165,7 +165,7 @@ export default function Footer() {
           {/* Column 2 — company */}
           <motion.div variants={columnVariants}>
             <FooterColumnHeading>Company</FooterColumnHeading>
-            <ul className="space-y-3">
+            <ul className="space-y-3 text-sm not-italic text-slate-400">
               {companyLinks.map((link) => (
                 <FooterLink key={link.label} href={link.href}>
                   {link.label}
@@ -177,7 +177,7 @@ export default function Footer() {
           {/* Column 3 — services */}
           <motion.div variants={columnVariants}>
             <FooterColumnHeading>Services</FooterColumnHeading>
-            <ul className="space-y-3">
+            <ul className="space-y-3 text-sm not-italic text-slate-400">
               {serviceLinks.map((link) => (
                 <FooterLink key={link.label} href={link.href}>
                   {link.label}
