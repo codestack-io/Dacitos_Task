@@ -4,45 +4,49 @@
 import { motion, useReducedMotion } from "framer-motion"
 import {
   Building2,
-  
   MapPin,
   Phone,
   Mail,
   Clock,
+  Map,
 } from "lucide-react"
 import {
   FaFacebookF,
   FaInstagram,
   FaLinkedinIn,
   FaYoutube,
-} from "react-icons/fa";
+} from "react-icons/fa"
 
 // --- Data -------------------------------------------------------------
-// Kept as arrays so the markup stays a clean `.map()` and content can be
-// updated without touching layout.
 
 const socialLinks = [
   { icon: FaLinkedinIn, label: "LinkedIn", href: "#" },
   { icon: FaFacebookF, label: "Facebook", href: "#" },
   { icon: FaInstagram, label: "Instagram", href: "#" },
   { icon: FaYoutube, label: "YouTube", href: "#" },
-];
-
-const companyLinks = [
-  { label: "About", href: "#about" },
-  { label: "Services", href: "#services" },
-  { label: "Industries", href: "#industries" },
-  { label: "Careers", href: "#careers" },
-  { label: "Contact", href: "#contact" },
 ]
 
-const serviceLinks = [
-  { label: "Facility Management", href: "#services" },
-  { label: "Technical Management", href: "#services" },
-  { label: "Security Services", href: "#services" },
-  { label: "Housekeeping", href: "#services" },
-  { label: "Property Maintenance", href: "#services" },
-  { label: "Soft Services", href: "#services" },
+const menuLinks = [
+  { label: "Home", href: "#home" },
+  { label: "About Us", href: "#about" },
+  { label: "Services", href: "#services" },
+  { label: "Our Strength", href: "#strength" },
+  { label: "Gallery", href: "#gallery" },
+]
+
+const quickLinks = [
+  { label: "Our Clients", href: "#clients" },
+  { label: "Recruitments", href: "#recruitments" },
+  { label: "Careers", href: "#careers" },
+  { label: "Contact Us", href: "#contact" },
+]
+
+const presenceLocations = [
+  { label: "Telangana" },
+  { label: "Andhra Pradesh" },
+  { label: "Karnataka" },
+  { label: "Tamilnadu" },
+  { label: "Odisha" },
 ]
 
 const bottomLinks = [
@@ -54,7 +58,7 @@ const bottomLinks = [
 
 const containerVariants = {
   hidden: {},
-  visible: { transition: { staggerChildren: 0.12, delayChildren: 0.1 } },
+  visible: { transition: { staggerChildren: 0.1, delayChildren: 0.1 } },
 }
 
 const columnVariants = {
@@ -62,9 +66,8 @@ const columnVariants = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } },
 }
 
-// --- Small reusable pieces ------------------------------------------------
+// --- Reusable pieces ---------------------------------------------------
 
-/** Footer link with an arrow-free, pure slide-right micro-interaction. */
 function FooterLink({ href, children }) {
   return (
     <li>
@@ -94,7 +97,7 @@ export default function Footer() {
 
   return (
     <footer className="relative overflow-hidden border-t border-white/[0.06] bg-[#32374b] px-6 pt-24 pb-10 md:px-12">
-      {/* ambient blobs, subtler than the CTA above */}
+      {/* Ambient background glows */}
       {!reduceMotion && (
         <>
           <motion.div
@@ -112,7 +115,6 @@ export default function Footer() {
         </>
       )}
 
-      {/* whole footer fades upward as it enters the viewport */}
       <motion.div
         initial={{ opacity: 0, y: 32 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -125,10 +127,11 @@ export default function Footer() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-80px" }}
-          className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8"
+          className="grid grid-cols-1 gap-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 lg:gap-6"
         >
-          {/* Column 1 — brand */}
-          <motion.div variants={columnVariants}>
+          {/* Column 1 — Brand */}
+          
+            <motion.div variants={columnVariants} className="sm:col-span-2 md:col-span-1 lg:col-span-1">
             <a href="#home" className="inline-flex items-center gap-2.5">
               <span className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-gradient-to-br from-cyan-400/15 to-blue-500/15">
                 <Building2 className="h-5 w-5 text-cyan-300" aria-hidden="true" />
@@ -138,12 +141,10 @@ export default function Footer() {
               </span>
             </a>
 
-            <p className="mt-5 max-w-xs text-sm leading-relaxed text-slate-400">
-              Amaze Property Management Solutions Pvt Ltd — in-house facility, technical, and workforce
-              management for portfolios across India.
+            <p className="mt-5 text-sm leading-relaxed text-slate-400">
+              Amaze Property Management Solutions Pvt Ltd — in-house facility, technical, and workforce management.
             </p>
 
-            {/* social icons */}
             <ul className="mt-6 flex items-center gap-3">
               {socialLinks.map(({ icon: Icon, label, href }) => (
                 <li key={label}>
@@ -162,11 +163,11 @@ export default function Footer() {
             </ul>
           </motion.div>
 
-          {/* Column 2 — company */}
+          {/* Column 2 — Menu */}
           <motion.div variants={columnVariants}>
-            <FooterColumnHeading>Company</FooterColumnHeading>
-            <ul className="space-y-3 text-sm not-italic text-slate-400">
-              {companyLinks.map((link) => (
+            <FooterColumnHeading>Menu</FooterColumnHeading>
+            <ul className="space-y-3 text-sm text-slate-400">
+              {menuLinks.map((link) => (
                 <FooterLink key={link.label} href={link.href}>
                   {link.label}
                 </FooterLink>
@@ -174,11 +175,11 @@ export default function Footer() {
             </ul>
           </motion.div>
 
-          {/* Column 3 — services */}
+          {/* Column 3 — Quick Links */}
           <motion.div variants={columnVariants}>
-            <FooterColumnHeading>Services</FooterColumnHeading>
-            <ul className="space-y-3 text-sm not-italic text-slate-400">
-              {serviceLinks.map((link) => (
+            <FooterColumnHeading>Quick Links</FooterColumnHeading>
+            <ul className="space-y-3 text-sm text-slate-400">
+              {quickLinks.map((link) => (
                 <FooterLink key={link.label} href={link.href}>
                   {link.label}
                 </FooterLink>
@@ -186,7 +187,20 @@ export default function Footer() {
             </ul>
           </motion.div>
 
-          {/* Column 4 — contact */}
+          {/* Column 4 — Our Presence */}
+          <motion.div variants={columnVariants}>
+            <FooterColumnHeading>Our Presence</FooterColumnHeading>
+            <ul className="space-y-3 text-sm text-slate-400">
+              {presenceLocations.map((location) => (
+                <li key={location.label} className="flex items-center gap-2.5">
+                  <Map className="h-4 w-4 shrink-0 text-cyan-400" aria-hidden="true" />
+                  <span>{location.label}</span>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+
+          {/* Column 5 — Contact */}
           <motion.div variants={columnVariants}>
             <FooterColumnHeading>Contact</FooterColumnHeading>
             <address className="space-y-4 text-sm not-italic text-slate-400">
@@ -218,7 +232,7 @@ export default function Footer() {
           </motion.div>
         </motion.div>
 
-        {/* bottom bar */}
+        {/* Bottom bar */}
         <div className="mt-16 border-t border-white/[0.08] pt-8">
           <div className="flex flex-col items-center justify-between gap-4 text-xs text-slate-500 sm:flex-row">
             <p>© 2026 Amaze PMS. All Rights Reserved.</p>

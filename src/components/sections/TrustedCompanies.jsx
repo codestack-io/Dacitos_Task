@@ -17,7 +17,7 @@ const companies = [
   },
   {
     name: "Oliva",
-    logo: "/logo4.png",
+    logo: "/logo4.jpeg",
   },
   {
     name: "JLL",
