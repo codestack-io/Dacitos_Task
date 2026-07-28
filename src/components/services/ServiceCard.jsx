@@ -1,6 +1,14 @@
 // components/sections/ServiceCard.jsx
 "use client"
 
+// NOTE: No changes made to this file. All scroll-reveal animation logic
+// (slide-in direction, stagger timing, viewport trigger, reduced-motion
+// fallback) lives in the parent `ServicesSection.jsx`, which wraps each
+// <ServiceCard /> in its own motion.div for the reveal. This component only
+// owns the "rest" → "hover" pointer-interaction states (tilt, spotlight,
+// icon rotation, accent line, arrow), which were required to stay exactly
+// as they are — so nothing here needed to change.
+
 import { motion, useMotionValue, useSpring, useReducedMotion } from "framer-motion"
 import { ArrowUpRight } from "lucide-react"
 import { useRef } from "react"

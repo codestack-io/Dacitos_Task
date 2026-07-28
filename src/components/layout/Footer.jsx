@@ -4,26 +4,29 @@
 import { motion, useReducedMotion } from "framer-motion"
 import {
   Building2,
-  Facebook,
-  Instagram,
-  Linkedin,
-  Youtube,
+  
   MapPin,
   Phone,
   Mail,
   Clock,
 } from "lucide-react"
+import {
+  FaFacebookF,
+  FaInstagram,
+  FaLinkedinIn,
+  FaYoutube,
+} from "react-icons/fa";
 
 // --- Data -------------------------------------------------------------
 // Kept as arrays so the markup stays a clean `.map()` and content can be
 // updated without touching layout.
 
 const socialLinks = [
-  { icon: Linkedin, label: "LinkedIn", href: "#" },
-  { icon: Facebook, label: "Facebook", href: "#" },
-  { icon: Instagram, label: "Instagram", href: "#" },
-  { icon: Youtube, label: "YouTube", href: "#" },
-]
+  { icon: FaLinkedinIn, label: "LinkedIn", href: "#" },
+  { icon: FaFacebookF, label: "Facebook", href: "#" },
+  { icon: FaInstagram, label: "Instagram", href: "#" },
+  { icon: FaYoutube, label: "YouTube", href: "#" },
+];
 
 const companyLinks = [
   { label: "About", href: "#about" },
@@ -90,7 +93,7 @@ export default function Footer() {
   const reduceMotion = useReducedMotion()
 
   return (
-    <footer className="relative overflow-hidden border-t border-white/[0.06] bg-[#050816] px-6 pt-24 pb-10 md:px-12">
+    <footer className="relative overflow-hidden border-t border-white/[0.06] bg-[#32374b] px-6 pt-24 pb-10 md:px-12">
       {/* ambient blobs, subtler than the CTA above */}
       {!reduceMotion && (
         <>

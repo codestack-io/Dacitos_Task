@@ -29,7 +29,7 @@ export default function CallToAction() {
   return (
     <section
       aria-labelledby="cta-heading"
-      className="relative overflow-hidden bg-[#050816] px-6 py-28 md:py-36"
+      className="relative overflow-hidden bg-[#32374b] px-6 py-28 md:py-36"
     >
       {/* ambient floating blobs — match Services/Hero atmosphere */}
       {!reduceMotion && (
@@ -72,7 +72,7 @@ export default function CallToAction() {
           )}
 
           {/* card body */}
-          <div className="relative rounded-[32px] bg-[#050816]/95 px-8 py-14 text-center backdrop-blur-2xl md:px-16 md:py-20">
+          <div className="relative rounded-[32px] bg-[#32374b] px-8 py-14 text-center backdrop-blur-2xl md:px-16 md:py-20">
             {/* badge */}
             <motion.div
               initial={{ opacity: 0, y: 12 }}
