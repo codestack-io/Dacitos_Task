@@ -32,7 +32,7 @@ export default function Hero() {
     <section
       id="hero"
       aria-label="Amaze PMS introduction"
-      className="relative isolate overflow-hidden bg-[#0A0E1A] px-4 pb-24 pt-36 sm:px-6 lg:px-8 lg:pb-32 lg:pt-44"
+      className="relative isolate overflow-hidden bg-[#32374b] px-4 pb-24 pt-36 sm:px-6 lg:px-8 lg:pb-32 lg:pt-44"
     >
       {/* Animated gradient mesh, grid, and orbs — sits behind everything */}
       <HeroBackground />

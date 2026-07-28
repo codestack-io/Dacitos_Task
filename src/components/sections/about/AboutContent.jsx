@@ -21,19 +21,19 @@ const features = [
 
 const stats = [
   {
-    icon: Users,
+    
     value: 15000,
     suffix: "+",
     
   },
   {
-    icon: Building2,
+    
     value: 200,
     suffix: "+",
     
   },
   {
-    icon: MapPin,
+    
     value: "PAN India",
     
   },
@@ -69,7 +69,7 @@ export default function AboutSection() {
   return (
     <section
       id="about"
-      className="relative overflow-hidden bg-[#050816] py-24"
+      className="relative overflow-hidden bg-[#2d303e] py-24"
     >
       {/* Background */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(34,211,238,.08),transparent_35%),radial-gradient(circle_at_bottom_left,rgba(59,130,246,.08),transparent_35%)]" />
@@ -140,40 +140,34 @@ export default function AboutSection() {
               ))}
             </div>
 
-            {/* Stats */}
+{/* Stats */}
 
-            <div className="mt-12 grid gap-5 sm:grid-cols-3">
-              {stats.map((item, index) => {
-                
-
-                return (
-                  <motion.div
-                    key={item.label}
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{
-                      delay: index * 0.15,
-                    }}
-                    whileHover={{
-                      y: -6,
-                    }}
-                    
-                  >
-                    
-
-                    <h3 className="mt-5 text-3xl font-bold text-white">
-                   {typeof item.value === "number" ? (
-                   <CountUp value={item.value} suffix={item.suffix} />
-                  ) : (
-                  item.value
-                    )}
-                    </h3>
-                    
-                  </motion.div>
-                );
-              })}
-            </div>
+<div className="mt-12 flex flex-wrap gap-10">
+  {stats.map((item, index) => (
+    <motion.div
+      key={index}
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{
+        delay: index * 0.15,
+      }}
+      whileHover={{
+        y: -6,
+        scale: 1.05,
+      }}
+      className="relative"
+    >
+      <h3 className="text-4xl font-bold text-white">
+        {typeof item.value === "number" ? (
+          <CountUp value={item.value} suffix={item.suffix} />
+        ) : (
+          item.value
+        )}
+      </h3>
+    </motion.div>
+  ))}
+</div>
 
             {/* CTA */}
 

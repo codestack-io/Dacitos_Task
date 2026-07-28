@@ -7,7 +7,7 @@ export default function AboutSection() {
   return (
     <section
       id="about"
-      className="relative overflow-hidden bg-[#050816] py-28"
+      className="relative overflow-hidden bg-[#32374b] py-28"
     >
       {/* Background Glow */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(34,211,238,.08),transparent_35%),radial-gradient(circle_at_bottom_left,rgba(59,130,246,.08),transparent_35%)]" />

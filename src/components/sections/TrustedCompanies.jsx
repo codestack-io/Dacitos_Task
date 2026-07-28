@@ -33,7 +33,7 @@ export default function TrustedCompanies() {
   const logos = [...companies, ...companies];
 
   return (
-    <section className="relative overflow-hidden border-y border-slate-200 bg-white py-14">
+    <section className="relative overflow-hidden  bg-[#32374b] py-14">
 
       {/* Background Glow */}
       <div className="pointer-events-none absolute left-1/2 top-1/2 h-72 w-72 -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue-100/40 blur-3xl" />
